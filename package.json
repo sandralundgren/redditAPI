@@ -5,8 +5,8 @@
   "private": false,
   "dependencies": {
     "hapi": "^8.6.1",
-    "path": "^0.11.14"
-    //"hbs": "*",
+    "path": "^0.11.14",
+    "request": "^2.58.0"
   },
   "devDependencies": {
     "gulp-uglify": "^1.2.0"

@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Reddit API - 10 latest hot frontend topics from reddit</title>
+
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script><script type="text/javascript">google.load("jquery", "1");</script>
+
+	<title>Reddit API - 5 latest hot frontend topics from reddit</title>
+  <meta charset="UTF-8">
 </head>
 <body>
 
-Hello World
+  <h1>Reddit</h1>
 
-	<!--script src="/js/main.js"></script-->
+  <ul id="posts"></ul>
+
+	<script>
+    $.ajax({
+        url: '/reddit',
+        type: 'get',
+        success: function (data) {
+          for (var i = 0; i < data.length; i++) {
+            $('#posts').append('<li>' + '<a href="' + data[i].url + '">' + data[i].title + '</a>' + '</li>');
+          }
+        }
+      });
+  </script>
 	
 </body>
 </html>
