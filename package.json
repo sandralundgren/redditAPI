@@ -1,0 +1,12 @@
+{
+  "name": "redditapi",
+  "version": "0.0.1",
+  "description": "10 latest hot frontend topics from reddit",
+  "private": false,
+  "dependencies": {
+    "hapi": "^8.6.1"
+  },
+  "devDependencies": {
+    "gulp-uglify": "^1.2.0"
+  }
+}
