@@ -1,7 +1,6 @@
 var Hapi = require('hapi');
 var request = require('request');
 var reddit = require('redwrap');
-//var rest = require('./restler');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -12,21 +11,26 @@ server.connection({
 
 // Request - Simplified HTTP client
 
-request('https://www.reddit.com/r/Frontend/hot/.json', function (error, response, body) {
+request({
+url: 'https://www.reddit.com/r/Frontend/hot/.json',
+json: true
+}, function (error, response, body) {
   if (!error && response.statusCode == 200) {
     
     console.log(body);  
 
     var titles = ' ';
     for (var i = 0; i < 10; i++) {
-        titles += reddit.data.children[i].data.title;
+        titles += body.data.children[i].data.title;
+        titles += ' / ';
     }
 
-    response.send(titles);
+    console.log(titles);
+
+    //response.send(titles);
 
   }
 })
-
 
 // redwrap  
 
@@ -37,18 +41,6 @@ reddit.r('Frontend', function(error, response, body){
 		});
   }
 });
-
-// Restler
-/*
-restler.get('http://www.reddit.com/r/Frontend/hot/.json').on('complete', function(reddit) {
-
-	var titles = ' ';
-    for (var i = 0; i < 10; i++) {
-        titles += reddit.data.children[i].data.title;
-    }
-
-	response.send(titles);
-});*/
 
 
 // Add the route

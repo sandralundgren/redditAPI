@@ -5,8 +5,7 @@
   "private": false,
   "dependencies": {
     "hapi": "^8.6.1",
-    "redwrap": "0.0.4",
-    "restler": "2.x.x"
+    "redwrap": "0.0.4"
   },
   "devDependencies": {
     "gulp-uglify": "^1.2.0"
