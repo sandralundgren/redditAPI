@@ -4,7 +4,9 @@
   "description": "10 latest hot frontend topics from reddit",
   "private": false,
   "dependencies": {
-    "hapi": "^8.6.1"
+    "hapi": "^8.6.1",
+    "redwrap": "0.0.4",
+    "restler": "2.x.x"
   },
   "devDependencies": {
     "gulp-uglify": "^1.2.0"
