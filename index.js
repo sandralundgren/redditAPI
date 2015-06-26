@@ -1,6 +1,11 @@
+/*------------------------------------*\
+    $REDDIT API
+\*------------------------------------*/
+
 var Hapi = require('hapi');
 var request = require('request');
 var Path = require('path');
+var debug = require('util').debug;
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -9,39 +14,39 @@ server.connection({
     port: 8000 
 });
 
-/* Sets up the views
-server.views({
-    engines: {
-        html: require('handlebars')
-    },
-    path: Path.join(__dirname, 'views')
-});
-*/
-
-
+/**
+ * We need to wrap the request in a asynchronous function
+ */
 // Request - Simplified HTTP client
 
-request({
-url: 'https://www.reddit.com/r/Frontend/hot/.json',
-json: true
-}, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    
-    console.log(body);  
+function fetchPosts(callback) {
+    debug('Fetching posts…');
+    request({
+        url: 'https://www.reddit.com/r/Frontend/hot/.json',
+        json: true
+    }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
 
-    var titles = ' ';
-    for (var i = 0; i < 10; i++) {
-        titles += i + 1 + ' ';
-        titles += body.data.children[i].data.title;
-        titles += ' / ';
-    }
+            // Let's push the titles into an array instead
+            var items = [ ];
+            for (var i = 0; i < 10; i++) {
 
-    console.log(titles);
+                // Let's just keep the url and title in an own object
+                var objects = {
+                    title: body.data.children[i].data.title,
+                    url: body.data.children[i].data.url
+                }
 
-    //response.send(titles);
+                // And then push them to the items array
+                items.push(objects);
+            }
 
-  }
-})
+            debug('We got ' + items.length + ' items');
+
+            callback(items);
+        }
+    });
+}
 
 // Add the route
 server.route({
@@ -49,10 +54,39 @@ server.route({
     path: '/', 
     handler: function (request, reply) {
 
-       reply.file('index.html');
+       reply.file(__dirname + '/views/index.html');
     }
 });
 
+server.route({
+    method: 'GET',
+    path: '/main.css',
+    handler: function (request, reply) {
+
+        reply.file(__dirname + '/public/css/main.css');
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/main.js',
+    handler: function (request, reply) {
+      
+        reply.file(__dirname + '/public/js/main.js');
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/reddit',
+    handler: function (request, reply) {
+        // Run the function before we send the response…
+        fetchPosts(function (ret) { 
+            // …and when reply is ready, return the callback from fetchPosts
+            reply(ret);
+        });
+    }
+});
 
 // Start the server
 server.start(); 
