@@ -28,7 +28,7 @@ function fetchPosts(callback) {
 
             // Let's push the titles into an array instead
             var items = [];
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 10; i++) {
 
                 // Let's just keep the url and title in an own object
                 var objects = {
