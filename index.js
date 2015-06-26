@@ -55,7 +55,7 @@ server.route({
     method: 'GET',
     path: '/', 
     handler: function (request, reply) {
-      
+
        reply.file(__dirname + '/views/index.html');
     }
 });
@@ -66,18 +66,6 @@ server.route({
     handler: function (request, reply) {
 
         reply.file(__dirname + '/public/css/main.css');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/reddit',
-    handler: function (request, reply) {
-        // Run the function before se send the response…
-        fetchPosts(function (ret) { 
-            // …and when reply is ready, return the callback from fetchPosts
-            reply(ret);
-        });
     }
 });
 
