@@ -1,6 +1,6 @@
 var Hapi = require('hapi');
 var request = require('request');
-var reddit = require('redwrap');
+var Path = require('path');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -8,6 +8,16 @@ server.connection({
     host: 'localhost', 
     port: 8000 
 });
+
+/* Sets up the views
+server.views({
+    engines: {
+        html: require('handlebars')
+    },
+    path: Path.join(__dirname, 'views')
+});
+*/
+
 
 // Request - Simplified HTTP client
 
@@ -33,23 +43,13 @@ json: true
   }
 })
 
-// redwrap  
-
-reddit.r('Frontend', function(error, response, body){
-  if (!error && response.statusCode == 200) {
-		reddit.list('hot', function(error, response, body){
-			console.log(body); // for the frontend subreddit w/ 'hot' filter 
-		});
-  }
-});
-
-
 // Add the route
 server.route({
     method: 'GET',
-    path:'/r/frontend/hot', 
+    path: '/', 
     handler: function (request, reply) {
-       console.log(reply); //reply(console.log(body));
+
+       reply.file('index.html');
     }
 });
 
