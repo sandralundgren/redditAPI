@@ -21,6 +21,7 @@ json: true
 
     var titles = ' ';
     for (var i = 0; i < 10; i++) {
+        titles += i + 1 + ' ';
         titles += body.data.children[i].data.title;
         titles += ' / ';
     }
