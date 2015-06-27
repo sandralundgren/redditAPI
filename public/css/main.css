@@ -1,22 +1,16 @@
 body {
-  font-family: "Open Sans";
-}  
+  font-family: "Open Sans"; }
 
 /* Main section styles
 -------------------------------------------------- */
-
 #main {
   max-width: 1170px;
   margin-right: 25%;
   margin-left: 25%;
-  margin-top: 10em;
-}
+  margin-top: 10em; }
 
-.title {
-  margin-top: 1em;
-}
+h1 {
+  margin-bottom: 1.5em; }
 
 .centered {
-  text-align: center;
-}
-
+  text-align: center; }
