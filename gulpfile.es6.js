@@ -9,13 +9,6 @@ import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
 import minifyCSS from 'gulp-minify-css';
-// var gulp      = require('gulp');
-//var babel     = require('gulp-babel');
-//var sass      = require('gulp-sass');
-//var uglify    = require('gulp-uglify');
-//var rename    = require('gulp-rename');
-//var concat    = require('gulp-concat');
-//var minifyCSS = require('gulp-minify-css');
 
 gulp.task('sass', () => {
   gulp.src('public/css/*.scss')
