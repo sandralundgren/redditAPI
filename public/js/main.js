@@ -2,8 +2,6 @@
 
 $(document).ready(function () {
 
-  alert('main.js is linked');
-
   $.ajax({
         url: '/reddit',
         type: 'get',
@@ -14,6 +12,9 @@ $(document).ready(function () {
             $('#posts').append('<li>' + '<a href="' + data[i].url + '">' + data[i].title + '</a>' + '</li>');
 
           }
+        },
+        fail: function () {
+        	console.log('Something went wrong.');
         }
       });	
              
