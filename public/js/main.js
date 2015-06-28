@@ -3,7 +3,8 @@
 $(document).ready(function () {
 
   $.ajax({
-        url: '/reddit',
+        // Let's use the local file instead
+        url: '/reddit-local',
         type: 'get',
         success: function (data) {
 

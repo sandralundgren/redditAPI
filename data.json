@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Is this a good way to create a morphing loading animation?",
+        "url": "http://dynamicsjs.com/examples/syncing.html"
+    },
+    {
+        "title": "Schmick.js - Simple transitions between pages for sites built without ajax",
+        "url": "https://github.com/TimeToogo/Schmick"
+    },
+    {
+        "title": "Things that can be done in PostCSS but are allegedly \"Impossible with SASS\"?",
+        "url": "https://youtu.be/1yUFTrAxTzg?t=15m10s"
+    },
+    {
+        "title": "CSSConf US 2015 videos",
+        "url": "https://2015.cssconf.com/#videos"
+    },
+    {
+        "title": "col-ratio: Responsive and intuitive ratio-based columns.",
+        "url": "http://www.reddit.com/r/Frontend/comments/3b7l4d/colratio_responsive_and_intuitive_ratiobased/"
+    },
+    {
+        "title": "What to charge for freelance Frontend work?",
+        "url": "http://www.reddit.com/r/Frontend/comments/3b7drh/what_to_charge_for_freelance_frontend_work/"
+    },
+    {
+        "title": "Why I don’t want to be a front-end web developer...It often feels like despite my best efforts, and regardless of how many hours of effort I put into my own education, my skill level is actually declining.",
+        "url": "http://www.developerhandbook.com/2015/06/25/why-i-dont-want-to-be-a-front-end-web-developer/"
+    },
+    {
+        "title": "Pure.css: a set of small, responsive CSS modules that you can use in every web project.",
+        "url": "http://purecss.io/"
+    },
+    {
+        "title": "Atom 1.0 Released",
+        "url": "http://blog.atom.io/2015/06/25/atom-1-0.html"
+    },
+    {
+        "title": "Aurelia: Next Generation Web Apps. 1 hour video, code starts around 24:30. Very interesting and very well presented and explained. Worth your time if you're writing SPAs",
+        "url": "https://vimeo.com/131641012"
+    }
+]

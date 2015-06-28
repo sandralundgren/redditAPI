@@ -6,6 +6,7 @@ var Hapi    = require('hapi');
 var request = require('request');
 var Path    = require('path');
 var debug   = require('util').debug;
+var fs      = require('fs');
 
 // Create a server with a host and port
 var server = new Hapi.Server();
@@ -60,23 +61,38 @@ server.route({
     }
 });
 
+/**
+ * Lets make a global route for assets
+ */
+
 server.route({
     method: 'GET',
-    path: '/main.css',
-    handler: function (request, reply) {
-
-        reply.file(__dirname + '/public/css/main.css');
+    path: '/assets/{param*}',
+    handler: {
+        directory: {
+            path: 'public',
+            listing: false
+        }
     }
 });
 
-server.route({
-    method: 'GET',
-    path: '/main.js',
-    handler: function (request, reply) {
+// server.route({
+//     method: 'GET',
+//     path: '/main.css',
+//     handler: function (request, reply) {
+
+//         reply.file(__dirname + '/public/css/main.css');
+//     }
+// });
+
+// server.route({
+//     method: 'GET',
+//     path: '/main.js',
+//     handler: function (request, reply) {
       
-        reply.file(__dirname + '/public/js/main.js');
-    }
-});
+//         reply.file(__dirname + '/public/js/main.js');
+//     }
+// });
 
 server.route({
     method: 'GET',
@@ -88,6 +104,30 @@ server.route({
             reply(ret);
         });
     }
+});
+
+/**
+ * Serve the local data file
+ */
+
+server.route({
+    method: 'GET',
+    path: '/reddit-local',
+    handler: function (request, reply) {
+        reply.file(__dirname + '/data.json')
+    }
+});
+
+
+
+/**
+ * Let's save the posts to a local file each time we restart the server
+ *
+ * @todo Run this function every 5th hour
+ */
+
+fetchPosts(function (ret) {
+   fs.writeFile('data.json', JSON.stringify(ret, null, 4), function(err) {}); 
 });
 
 // Start the server
